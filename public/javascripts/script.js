@@ -1,7 +1,7 @@
 var rocket;
 var hud;
 var asteroids = [20];
-var stars = [30];
+var stars = [50];
 
 var crashed = false;
 var speedUpBool = false;
@@ -9,6 +9,7 @@ var speedUpBool = false;
 var spaceshipImage;
 var asteroidImage;
 var explosionImage;
+var displayFont;
 
 var music;
 
@@ -16,6 +17,7 @@ function preload() {
     spaceshipImage = loadImage("./assets/Spaceship.png");
     asteroidImage = loadImage("./assets/Asteroids.png");
     explosionImage = loadImage("./assets/Explosion.png");
+    displayFont = loadFont("./assets/fonts/displayFont.ttf");
     soundFormats('mp3');
     music =  loadSound("./assets/Arpanauts.mp3");
 }
@@ -27,10 +29,10 @@ function setup(){
     for (var i = 0; i < 20; i++) {
          asteroids[i] = new Asteroid(asteroidImage);
     }
-    for (var j = 0; j < 30; j++){
+    for (var j = 0; j < 50; j++){
         stars[j] = new BackgroundStar();
     }
-    hud = new Hud(rocket.getFuel(), asteroids[0].getSpeed());
+    hud = new Hud(rocket.getFuel(), asteroids[0].getSpeed(), displayFont);
     music.setVolume(0.1);
     music.play();
 }
@@ -103,8 +105,8 @@ function speedUp(){
 
 function crash() {
     crashed = true;
-    rocket.crashed(asteroids[1].getSpeed());
     hud.crashed();
+    rocket.crashed(asteroids[1].getSpeed());
     for(var i = 0; i < asteroids.length; i++){
         asteroids[i].crashed();
     }

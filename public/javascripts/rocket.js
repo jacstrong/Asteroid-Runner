@@ -144,7 +144,7 @@ function Rocket(x, y, spaceshipImage, crashImage){
     };
 
     this.crashed = function(speed) {
-        //this.fuel = 0;
+        this.fuel = 0;
         this.c = color(155, 20, 20);
         this.frictionMultiplier = 0.97;
         this.velY += -speed;
@@ -195,8 +195,8 @@ function Rocket(x, y, spaceshipImage, crashImage){
     }
 
     this.stop = function() {
-        this.velX = this.velX * 0.3;
-        this.velY = this.velY * 0.3;
+        this.velX = this.velX * 0.7;
+        this.velY = this.velY * 0.7;
         if (this.fuel > 0){
             this.fuel -= this.fuelMulipilier;
         }
