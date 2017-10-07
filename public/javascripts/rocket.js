@@ -52,17 +52,7 @@ function Rocket(x, y, spaceshipImage, crashImage){
             }
         } else {
             if (this.crashedImageCountFast < 560) {
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
-                this.crashedImageCountFast++;
+                this.crashedImageCountFast += 10;
             }
 
             if (this.crashedImageCountFast < 50 && this.crashedImageCountFast >= 0) {
@@ -155,29 +145,29 @@ function Rocket(x, y, spaceshipImage, crashImage){
 
     this.getFuel = function() {
         return this.fuel;
-    }
+    };
     
     this.getX = function() {
         return this.pos.x;
-    }
+    };
 
     this.getY = function() {
         return this.pos.y;
-    }
+    };
 
     this.up = function() {
         if (this.fuel > 0 && this.pos.y > 20){
             this.velY -= this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
         }
-    }
+    };
 
     this.down = function() {
         if (this.fuel > 0 && this.pos.y < height - 40){
             this.velY += this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
         }
-    }
+    };
 
     this.right = function() {
         if (this.fuel > 0 && this.pos.x < width - 40){
@@ -185,20 +175,28 @@ function Rocket(x, y, spaceshipImage, crashImage){
             this.fuel -= this.fuelMulipilier;
         }
 
-    }
+    };
 
     this.left = function() {
         if (this.fuel > 0 && this.pos.x > 10){
             this.velX -= this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
         }
-    }
+    };
 
     this.stop = function() {
         this.velX = this.velX * 0.7;
         this.velY = this.velY * 0.7;
         if (this.fuel > 0){
             this.fuel -= this.fuelMulipilier;
+        }
+    };
+
+    this.performRefuel = function() {
+        if (this.fuel >= 800) {
+            this.fuel = 1000;
+        } else {
+            this.fuel += 200;
         }
     }
 }

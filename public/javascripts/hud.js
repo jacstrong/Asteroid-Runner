@@ -9,7 +9,7 @@ function Hud(fuel, speed, displayFont) {
     this.update = function(fuel, speed) {
         this.fuel = fuel;
         this.dist += (speed * (1/24));
-    }
+    };
 
     this.show = function() {
         textFont(displayFont, 22);
@@ -42,7 +42,7 @@ function Hud(fuel, speed, displayFont) {
                 rect(5, height - 17, (width / 4) - 10, 14, 5);
             }
         }
-    }
+    };
 
     this.crashed = function(){
         this.crashBool = true;
