@@ -43,11 +43,12 @@ function setup(){
 
 function draw(){
     background(0);
-    for (var j = 0; j < stars.length; j++){
+    for (var j = 0; j < stars.length; j++) {
         stars[j].show();
         stars[j].update();
     }
     refuel.update(rocket.getFuel(), asteroids[0].getSpeed());
+    refuel.show();
     rocket.show();
     rocket.update();
     speedUp();
@@ -55,17 +56,30 @@ function draw(){
         asteroids[i].show();
         asteroids[i].update();
     }
-    refuel.show();
     hud.update(rocket.getFuel(), asteroids[0].getSpeed());
     hud.show();
     up_down();
     right_left();
-    if (crashCheck() && !crashed){
+    if (crashCheck() && !crashed) {
         crash();
         console.log("I crashed");
     }
     if (refuelCheck()) {
-       performRefuel();
+        performRefuel();
+    }
+    if (crashed) {
+        push();
+        textFont(displayFont, 40);
+        rectMode(CENTER);
+        fill("grey");
+        rect(width/2, height/2, 200, 100, 10);
+        fill(255, 242, 230);
+        rect(width/2, height/2, 180, 80, 10);
+        fill(31, 46, 46);
+        textAlign(CENTER);
+        //textStlye(BOLD);
+        text("Dist: " + floor(str(hud.getDist())), width/2, height/2 + 10);
+        pop();
     }
 }
 

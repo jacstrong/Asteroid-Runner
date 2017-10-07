@@ -128,7 +128,7 @@ function Rocket(x, y, spaceshipImage, crashImage){
         if ((this.pos.x > width - 10 && this.velX > 0) || (this.pos.x < 20 && this.velX < 0)){
             this.velX *= this.edgeMultiplier;
         }
-        if ((this.pos.y > height - 10 && this.velY > 0) || (this.pos.x < 20 && this.velY < 0)){
+        if ((this.pos.y > height - 40 && this.velY > 0) || (this.pos.y < 50 && this.velY < 0)){
             this.velY *= this.edgeMultiplier;
         }
     };
@@ -140,8 +140,6 @@ function Rocket(x, y, spaceshipImage, crashImage){
         this.velY += -speed;
         this.crashed = true;
     };
-
-
 
     this.getFuel = function() {
         return this.fuel;
@@ -198,5 +196,5 @@ function Rocket(x, y, spaceshipImage, crashImage){
         } else {
             this.fuel += 200;
         }
-    }
+    };
 }

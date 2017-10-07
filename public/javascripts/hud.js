@@ -18,7 +18,13 @@ function Hud(fuel, speed, displayFont) {
         fill(255, 242, 230);
         rect(5, height - 75, width / 4 - 10, 30, 0, 20, 5, 0);
         fill(31, 46, 46);
-        text("Dist: " + floor(str(this.dist)), 10, height - 52);
+        if(!this.crashBool) {
+            text("Dist: " + floor(str(this.dist)), 10, height - 52);
+        } else {
+            if (this.errorCount < 50) {
+                text("ERROR", 10, height - 52);
+            }
+        }
         if (this.fuel > 0) {
             rect(2, height - 20, (width / 4) - 5, 20, 8);
             if (this.fuel > 300) {
@@ -44,6 +50,9 @@ function Hud(fuel, speed, displayFont) {
         }
     };
 
+    this.getDist = function(){
+      return this.dist;
+    };
     this.crashed = function(){
         this.crashBool = true;
     }
