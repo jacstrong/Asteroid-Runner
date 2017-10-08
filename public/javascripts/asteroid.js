@@ -7,7 +7,6 @@ function Asteroid(asteroidImgae) {
     this.speedMultiplier = 0.0008;
     this.asteroidImgae = asteroidImgae;
     this.asteroidPick = floor(random(1,4));
-    this.rotation = random(-1, 1);
     this.speedUpDif = 1.3;
 
     this.show = function() {
@@ -67,7 +66,7 @@ function Asteroid(asteroidImgae) {
 
     this.collision = function(x, y) {
         var d = dist(this.pos.x, this.pos.y, x, y);
-        return (d < this.r + 15);
+        return (d < this.r + 16);
     };
 
     this.crashed = function(){

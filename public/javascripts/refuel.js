@@ -1,5 +1,5 @@
 function Refuel(fuelImage) {
-    this.pos = createVector( 80, -200);
+    this.pos = createVector( random(30,width - 30), -200);
     this.fuelImage = fuelImage;
     this.fuel = 1000;
     this.speed = 0;
@@ -33,10 +33,10 @@ function Refuel(fuelImage) {
         }
         if(this.refuelBool){
             this.pos.y += speed;
-            if (this.pos.y > height + 100) {
-                this.refuelBool = false;
-                this.lastRefuel = 0;
-            }
+        }
+        if (this.pos.y > height + 100) {
+            this.refuelBool = false;
+            this.lastRefuel = 0;
         }
     };
 

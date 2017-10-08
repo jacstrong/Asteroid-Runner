@@ -16,6 +16,11 @@ var fuelImage;
 
 var music;
 
+var fps;
+var lastSec = second();
+var frames;
+
+
 function preload() {
     spaceshipImage = loadImage("./assets/Spaceship.png");
     asteroidImage = loadImage("./assets/Asteroids.png");
@@ -44,22 +49,26 @@ function setup(){
 
 function draw(){
     background(0);
+    if(lastSec != second()){
+        fps = frameCount - frames;
+        frames = frameCount;
+        lastSec = second();
+    }
 
     for (var j = 0; j < stars.length; j++) {
-        stars[j].show();
         stars[j].update();
+        stars[j].show();
     }
     refuel.update(rocket.getFuel(), asteroids[0].getSpeed());
+    rocket.update();
     refuel.show();
     rocket.show();
-    rocket.update();
     speedUp();
     for (var i = 0; i < asteroids.length; i++) {
-        asteroids[i].show();
         asteroids[i].update();
+        asteroids[i].show();
     }
     hud.update(rocket.getFuel(), asteroids[0].getSpeed());
-    hud.show();
     up_down();
     right_left();
     if (crashCheck() && !crashed) {
@@ -82,6 +91,9 @@ function draw(){
         text("Dist: " + floor(str(hud.getDist())), width / 2, height / 2 + 10);
         pop();
     }
+    hud.show();
+    fill("white");
+    text("FPS: " + str(fps), 20, 20);
 }
 
 function up_down() {
@@ -101,13 +113,6 @@ function right_left() {
         rocket.left();
     }
 }
-
-//function keyPressed(){
-//    if (keyCode === 80){
-//        pause = !pause;
-//    }
-
-//}
 
 function crashCheck() {
     if(!crashed){

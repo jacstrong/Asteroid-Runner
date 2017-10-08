@@ -17,10 +17,6 @@ function Rocket(x, y, spaceshipImage, crashImage){
     this.crashed = false;
 
     this.show = function() {
-        noStroke();
-        //fill(this.c);
-        //rectMode(RADIUS);
-        //rect(this.pos.x, this.pos.y, 20, 20);
         imageMode(CENTER);
 
         if(!crashed) {
