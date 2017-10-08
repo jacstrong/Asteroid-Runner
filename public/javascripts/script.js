@@ -29,7 +29,7 @@ function preload() {
 function setup(){
     //var screenWidth = windowHeight * 0.5625;
     createCanvas(600, 800);
-    rocket = new Rocket(300, height - 60, spaceshipImage, explosionImage);
+    rocket = new Rocket(300, height - 100, spaceshipImage, explosionImage);
     for (var i = 0; i < 20; i++) {
          asteroids[i] = new Asteroid(asteroidImage);
     }

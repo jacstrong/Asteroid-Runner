@@ -4,7 +4,7 @@ function Asteroid(asteroidImgae) {
     this.speed = 0;
     this.speedX = random(-0.1, 0.1);
     this.speedY = random(-0.1, 0.1);
-    this.speedMultiplier = 0.001;
+    this.speedMultiplier = 0.0006;
     this.asteroidImgae = asteroidImgae;
     this.asteroidPick = floor(random(1,4));
     this.rotation = random(-1, 1);
