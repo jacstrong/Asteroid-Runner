@@ -42,14 +42,7 @@ function Refuel(fuelImage) {
 
     this.refuelCheck = function(rocketX, rocketY) {
         var d = dist(this.pos.x, this.pos.y, rocketX, rocketY);
-        if (d < this.r + 15){
-            console.log(this.r);
-            console.log(d);
-            console.log("x= " + str(floor(this.pos.x)) + " y= " + str(floor(this.pos.y)));
-            return true;
-        } else {
-            return false;
-        }
+        return (d < this.r + 15);
     };
 
     this.performRefuel = function() {

@@ -6,6 +6,7 @@ var stars = [50];
 
 var crashed = false;
 var speedUpBool = false;
+var pause = false;
 
 var spaceshipImage;
 var asteroidImage;
@@ -38,11 +39,12 @@ function setup(){
     hud = new Hud(rocket.getFuel(), asteroids[0].getSpeed(), displayFont);
     refuel = new Refuel(fuelImage);
     music.setVolume(0.1);
-    //music.play();
+    music.play();
 }
 
 function draw(){
     background(0);
+
     for (var j = 0; j < stars.length; j++) {
         stars[j].show();
         stars[j].update();
@@ -62,7 +64,6 @@ function draw(){
     right_left();
     if (crashCheck() && !crashed) {
         crash();
-        console.log("I crashed");
     }
     if (refuelCheck()) {
         performRefuel();
@@ -72,13 +73,13 @@ function draw(){
         textFont(displayFont, 40);
         rectMode(CENTER);
         fill("grey");
-        rect(width/2, height/2, 200, 100, 10);
+        rect(width / 2, height / 2, 200, 100, 10);
         fill(255, 242, 230);
-        rect(width/2, height/2, 180, 80, 10);
+        rect(width / 2, height / 2, 180, 80, 10);
         fill(31, 46, 46);
         textAlign(CENTER);
         //textStlye(BOLD);
-        text("Dist: " + floor(str(hud.getDist())), width/2, height/2 + 10);
+        text("Dist: " + floor(str(hud.getDist())), width / 2, height / 2 + 10);
         pop();
     }
 }
@@ -100,6 +101,13 @@ function right_left() {
         rocket.left();
     }
 }
+
+//function keyPressed(){
+//    if (keyCode === 80){
+//        pause = !pause;
+//    }
+
+//}
 
 function crashCheck() {
     if(!crashed){
