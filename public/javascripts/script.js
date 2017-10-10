@@ -32,7 +32,7 @@ function preload() {
     displayFont = loadFont("./assets/fonts/displayFont.ttf");
     soundFormats('mp3');
     music =  loadSound("./assets/Arpanauts.mp3");
-    explosionSound = loadSound("./assets/Explosion.mp3");
+    explosionSound = loadSound("./assets/explosion.mp3");
 }
 
 function setup(){
