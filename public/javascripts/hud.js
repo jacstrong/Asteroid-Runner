@@ -25,7 +25,7 @@ function Hud(fuel, speed, displayFont) {
         textFont(displayFont, height/36);
         fill(31, 46, 46);
         if(!this.crashBool) {
-            text("Dist: " + floor(str(this.dist)), width/160, height - (height/15));
+            text("Dist: " + floor(str(this.dist)), width/60, height - (height/15));
         } else {
             if (this.errorCount < 50) {
                 text("ERROR", width/60, height - (height/15));

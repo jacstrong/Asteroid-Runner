@@ -33,7 +33,10 @@ function Asteroid(asteroidImgae) {
     };
 
     this.update = function() {
-        this.speed += this.speedMultiplier;
+        if(!crashed) {
+            this.speed = Math.log(millis() / 10000 + 1);
+            //this.speed += millis() / 1000000;
+        }
         this.pos.y += this.speed + this.speedY;
         this.pos.x += this.speedX;
 

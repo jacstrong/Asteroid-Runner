@@ -16,6 +16,7 @@ function Rocket(spaceshipImage, crashImage){
     this.crashedImageCountFast = 0;
     this.edgeMultiplier = 0.6;
     this.crashed = false;
+    this.thrusters = false;
 
     this.show = function() {
         imageMode(CENTER);
@@ -36,16 +37,20 @@ function Rocket(spaceshipImage, crashImage){
                 this.imageCount = 3;
             }
 
-            switch (this.imageCount) {
-                case 1:
-                    image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 48, 0, 48, 48);
-                    break;
-                case 2:
-                    image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 96, 0, 48, 48);
-                    break;
-                case 3:
-                    image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 144, 0, 48, 48);
-                    break;
+            if (this.thrusters){
+                image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 0, 0, 48, 48);
+            } else {
+                switch (this.imageCount) {
+                    case 1:
+                        image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 48, 0, 48, 48);
+                        break;
+                    case 2:
+                        image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 96, 0, 48, 48);
+                        break;
+                    case 3:
+                        image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 144, 0, 48, 48);
+                        break;
+                }
             }
         } else {
             if (this.crashedImageCountFast < 560) {
@@ -136,6 +141,8 @@ function Rocket(spaceshipImage, crashImage){
         this.frictionMultiplier = 0.97;
         this.velY += -speed;
         this.crashed = true;
+        explosionSound.setVolume(0.1);
+        explosionSound.play();
     };
 
     this.getFuel = function() {
@@ -150,10 +157,15 @@ function Rocket(spaceshipImage, crashImage){
         return this.pos.y;
     };
 
+    this.setThrusters = function() {
+        this.thrusters = false;
+    }
+
     this.up = function() {
         if (this.fuel > 0 && this.pos.y > 20){
             this.velY -= this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
+            this.thrusters = true;
         }
     };
 
@@ -161,6 +173,7 @@ function Rocket(spaceshipImage, crashImage){
         if (this.fuel > 0 && this.pos.y < height - 40){
             this.velY += this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
+            this.thrusters = true;
         }
     };
 
@@ -168,6 +181,7 @@ function Rocket(spaceshipImage, crashImage){
         if (this.fuel > 0 && this.pos.x < width - 40){
             this.velX += this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
+            this.thrusters = true;
         }
 
     };
@@ -176,6 +190,7 @@ function Rocket(spaceshipImage, crashImage){
         if (this.fuel > 0 && this.pos.x > 10){
             this.velX -= this.velMultiplier;
             this.fuel -= this.fuelMulipilier;
+            this.thrusters = true;
         }
     };
 

@@ -15,6 +15,7 @@ var asteroidImage;
 var explosionImage;
 var displayFont;
 var fuelImage;
+var explosionSound;
 
 var music;
 
@@ -31,6 +32,7 @@ function preload() {
     displayFont = loadFont("./assets/fonts/displayFont.ttf");
     soundFormats('mp3');
     music =  loadSound("./assets/Arpanauts.mp3");
+    explosionSound = loadSound("./assets/Explosion.mp3");
 }
 
 function setup(){
@@ -83,9 +85,11 @@ function draw(){
     hud.show();
     fill("white");
     text("FPS: " + str(fps), width/40, height/40);
+    text("SPEED: " + str(floor(asteroids[0].getSpeed())), width/40 + 100, height/40)
 }
 
 function up_down() {
+    rocket.setThrusters();
     if(keyIsDown(UP_ARROW)){
         rocket.up();
     } else if (keyIsDown(DOWN_ARROW)){
@@ -138,6 +142,7 @@ function crash() {
     for(i = 0; i < stars.length; i++){
         stars[i].crash();
     }
+    music.stop();
 }
 
 function refuelCheck() {
