@@ -34,10 +34,10 @@ function preload() {
 }
 
 function setup(){
-    //var screenWidth = windowHeight * 0.5625;
-    cnv = createCanvas(600, 800);
+    var screenWidth = windowHeight * 0.5625;
+    cnv = createCanvas(screenWidth - 30, windowHeight - 30);
     cnv.id("game");
-    rocket = new Rocket(300, height - 100, spaceshipImage, explosionImage);
+    rocket = new Rocket(spaceshipImage, explosionImage);
     for (var i = 0; i < 20; i++) {
          asteroids[i] = new Asteroid(asteroidImage);
     }
@@ -80,23 +80,9 @@ function draw(){
     if (refuelCheck()) {
         performRefuel();
     }
-    if (crashed) {
-        push();
-        textFont(displayFont, 40);
-        rectMode(CENTER);
-        fill("grey");
-        rect(width / 2, height / 2, 200, 100, 10);
-        fill(255, 242, 230);
-        rect(width / 2, height / 2, 180, 80, 10);
-        fill(31, 46, 46);
-        textAlign(CENTER);
-        //textStlye(BOLD);
-        text("Dist: " + floor(str(hud.getDist())), width / 2, height / 2 + 10);
-        pop();
-    }
     hud.show();
     fill("white");
-    text("FPS: " + str(fps), 20, 20);
+    text("FPS: " + str(fps), width/40, height/40);
 }
 
 function up_down() {
@@ -161,5 +147,4 @@ function refuelCheck() {
 function performRefuel() {
     refuel.performRefuel();
     rocket.performRefuel();
-
 }

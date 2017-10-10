@@ -15,3 +15,7 @@ body {
   border-width: 5px;
   border-color: #555555;
 }
+
+.loadingclass {
+    color: azure;
+}

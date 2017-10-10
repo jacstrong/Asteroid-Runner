@@ -3,7 +3,7 @@ function Refuel(fuelImage) {
     this.fuelImage = fuelImage;
     this.fuel = 1000;
     this.speed = 0;
-    this.r = 30;
+    this.r = width/20;
     this.lastRefuel = 0;
     this.refuelBool = false;
     this.imageCount = 0;

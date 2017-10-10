@@ -12,21 +12,27 @@ function Hud(fuel, speed, displayFont) {
     };
 
     this.show = function() {
-        textFont(displayFont, 22);
         fill("grey");
-        rect(0, height - 80, width / 4, 80, 0, 20, 0, 0);
+        rect(0, height - (height/10), width / 3, height/10, 0, width/40, 0, 0);
         fill(255, 242, 230);
-        rect(5, height - 75, width / 4 - 10, 30, 0, 20, 5, 0);
+        rect(width/120, height - (height/10.66), width/3 - (width/60), height/26.66, 0, width/40, width/40, 0);
+        fill(0, 0, 0);
+        textFont("Fantasy", height/36);
+        text("FUEL", (width/9), height - (height/35));
+        textFont("Fantasy", height/57);
+        text("F", (width/3) - (width/50), height - (height/35));
+        text("E", width/120, height - (height/35));
+        textFont(displayFont, height/36);
         fill(31, 46, 46);
         if(!this.crashBool) {
-            text("Dist: " + floor(str(this.dist)), 10, height - 52);
+            text("Dist: " + floor(str(this.dist)), width/160, height - (height/15));
         } else {
             if (this.errorCount < 50) {
-                text("ERROR", 10, height - 52);
+                text("ERROR", width/60, height - (height/15));
             }
         }
+        rect(width/300, height - (height/40), (width / 3) - (width/120), height/40, 8);
         if (this.fuel > 0) {
-            rect(2, height - 20, (width / 4) - 5, 20, 8);
             if (this.fuel > 300) {
                 fill(102, 255, 51);
             } else if (this.fuel > 100) {
@@ -34,19 +40,32 @@ function Hud(fuel, speed, displayFont) {
             } else {
                 fill(204, 0, 0);
             }
-            rect(5, height - 17, (width / 4) * (this.fuel / 1000) - 10, 14, 5);
+            rect(width/120, height - (height/47), (width / 3) * (this.fuel / 1000) - (width/60), height/57, 5);
             //fill(200, 20, 20)
             //text(str(floor(this.fuel)), 10, height - 5);
         } else {
-            rect(2, height - 20, (width / 4) - 5, 20, 8);
             this.errorCount++;
             if (this.errorCount > 100){
                 this.errorCount = 0;
             }
             if (this.errorCount < 50) {
                 fill(204, 0, 0);
-                rect(5, height - 17, (width / 4) - 10, 14, 5);
+                rect(width/120, height - (height/47), (width / 3)- (width/60), height/57, 5);
             }
+        }
+        if (this.crashBool) {
+            push();
+            textFont(displayFont, height/18);
+            rectMode(CENTER);
+            fill("grey");
+            rect(width / 2, height / 2, width/2, height/12, 10);
+            fill(255, 242, 230);
+            rect(width / 2, height / 2, width/2.2, height/16, 10);
+            fill(31, 46, 46);
+            textAlign(CENTER);
+            textStyle(BOLD);
+            text("Dist: " + floor(str(hud.getDist())), width / 2, height / 2 + height/70);
+            pop();
         }
     };
 

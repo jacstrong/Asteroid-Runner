@@ -1,6 +1,6 @@
 function Asteroid(asteroidImgae) {
-    this.pos = createVector(random(0,width), random(-600,height - 400));
-    this.r = random(20, 40);
+    this.pos = createVector(random(0,width), random(-600,height - (height/2)));
+    this.r = random(width/30, width/15);
     this.speed = 0;
     this.speedX = random(-0.1, 0.1);
     this.speedY = random(-0.1, 0.1);
@@ -40,7 +40,7 @@ function Asteroid(asteroidImgae) {
         if(this.pos.y > height + 40){
             this.pos.x = random(0, width);
             this.pos.y = random(-200,-50);
-            this.r = random(20, 40);
+            this.r = random(width/30, width/15);
         }
     };
 
@@ -66,7 +66,7 @@ function Asteroid(asteroidImgae) {
 
     this.collision = function(x, y) {
         var d = dist(this.pos.x, this.pos.y, x, y);
-        return (d < this.r + 16);
+        return (d < this.r + width/37);
     };
 
     this.crashed = function(){

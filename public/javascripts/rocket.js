@@ -1,7 +1,8 @@
-function Rocket(x, y, spaceshipImage, crashImage){
-    this.pos = createVector(x,y)
+function Rocket(spaceshipImage, crashImage){
+    this.pos = createVector(width/2, height*.8)
     this.velX = 0;
     this.velY = 0;
+    this.r = width/10
     this.c = color(155, 155, 55)
     this.fuel = 1000;
     this.velMultiplier = 0.3;
@@ -37,13 +38,13 @@ function Rocket(x, y, spaceshipImage, crashImage){
 
             switch (this.imageCount) {
                 case 1:
-                    image(this.spaceshipImage, this.pos.x, this.pos.y, 60, 60, 48, 0, 48, 48);
+                    image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 48, 0, 48, 48);
                     break;
                 case 2:
-                    image(this.spaceshipImage, this.pos.x, this.pos.y, 60, 60, 96, 0, 48, 48);
+                    image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 96, 0, 48, 48);
                     break;
                 case 3:
-                    image(this.spaceshipImage, this.pos.x, this.pos.y, 60, 60, 144, 0, 48, 48);
+                    image(this.spaceshipImage, this.pos.x, this.pos.y, this.r, this.r, 144, 0, 48, 48);
                     break;
             }
         } else {
@@ -80,37 +81,37 @@ function Rocket(x, y, spaceshipImage, crashImage){
 
             switch (this.crashedImageCount) {
                 case 1:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 0, 0, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 0, 0, 80, 80);
                     break;
                 case 2:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 80, 0, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 80, 0, 80, 80);
                     break;
                 case 3:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 240, 0, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 240, 0, 80, 80);
                     break;
                 case 4:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 320, 0, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 320, 0, 80, 80);
                     break;
                 case 5:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 160, 0, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 160, 0, 80, 80);
                     break;
                 case 6:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 0, 80, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 0, 80, 80, 80);
                     break;
                 case 7:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 80, 80, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 80, 80, 80, 80);
                     break;
                 case 8:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 160, 80, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 160, 80, 80, 80);
                     break;
                 case 9:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 240, 80, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 240, 80, 80, 80);
                     break;
                 case 10:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 320, 0, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 320, 0, 80, 80);
                     break;
                 case 11:
-                    image(this.crashImage, this.pos.x, this.pos.y, 60, 60, 0, 160, 80, 80);
+                    image(this.crashImage, this.pos.x, this.pos.y, this.r, this.r, 0, 160, 80, 80);
                     break;
             }
         }
