@@ -1,4 +1,4 @@
-#asteroid-runner.com
+# asteroid-runner.com
 
 Thanks for checking out Asteroid Runner!
 
